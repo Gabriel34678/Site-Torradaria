@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="js/script.js"></script>
+    <title>Livraria</title>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'/>
+        <script>
+
+//TORRADEIRA 1
+
+        function adicionarConteudo() {
+            var input = document.getElementById('inp');
+            var valorInput = parseInt(input.value);
+            var valorTotal = valorInput * 200;
+            quantia = valorInput
+            if (localStorage.getItem('vendas')) {
+                var vendas = JSON.parse(localStorage.getItem('vendas'));
+                vendas.push(valorTotal);
+                localStorage.setItem('vendas', JSON.stringify(vendas));
+            } else {
+                var novaArray = [valorTotal];
+                localStorage.setItem('vendas', JSON.stringify(novaArray));
+            }
+        }
+
+        function somarValoresVendas() {
+            if (localStorage.getItem('vendas')) {
+                var vendas = JSON.parse(localStorage.getItem('vendas'));
+
+                if (vendas.length === 0) {
+                    alert('Não houve vendas registradas.');
+                } else {
+                    var totalVendas = vendas.reduce((total, venda) => total + venda, 0);
+                    alert(`A soma total das vendas é: R$${totalVendas}`);
+                }
+            } else {
+                alert('Não houve vendas registradas.');
+            }
+        }
+
+        function mais(){
+            var input = document.getElementById('inp');
+            var valorAtual = parseInt(input.value);
+            valorAtual++;
+            input.value = valorAtual;
+            multiplicar()
+        }
+
+        function menos(){
+            var input = document.getElementById('inp');
+            var valorAtual = parseInt(input.value);
+            valorAtual--;
+            valorAtual = Math.max(valorAtual, 0);
+            input.value = valorAtual;
+            multiplicar()
+        }
+
+        function verificarCompra() {
+            var input = document.getElementById('inp');
+            var ValorAtual = parseInt(input.value);
+            
+            if (ValorAtual === 0) {
+                alert('Você precisa selecionar pelo menos 1 item para comprar.');
+                event.preventDefault();
+            } else{
+                alert("Complete o formulário para concluir a compra!")
+                esc()
+                nomeProduto()
+                adicionarConteudo()
+                
+            }
+        }
+            
+        function multiplicar() {
+            var input = document.getElementById('inp');
+            var valorInput = parseInt(input.value);
+            var h1 = document.getElementById('val1')
+            h1.innerHTML = 'R$'+ valorInput * 200 + ",00";
+        }
+
+        function nomeProduto(){
+        var meuTituloElement = document.getElementById("nome1");
+        if (meuTituloElement) {
+        var valorDoH2 = meuTituloElement.textContent || meuTituloElement.innerText;
+            localStorage.setItem('nome', JSON.stringify(valorDoH2));
+        }
+        }
+//TORRADEIRA 1 FIM
+
+//TORRADEIRA 2
+
+        function nomeProduto2(){
+        var meuTituloElement = document.getElementById('nome2');
+        if (meuTituloElement) {
+        var h22 = meuTituloElement.textContent || meuTituloElement.innerText;
+            localStorage.setItem('nome2', JSON.stringify(h22));
+        }
+        }
+
+        function mais2(){
+            var input2 = document.getElementById('inp2');
+            var valorAtu2 = parseInt(input2.value);
+            valorAtu2++;
+            input2.value = valorAtu2;
+            multiplicar2()
+        }
+
+        function menos2(){
+            var input2 = document.getElementById('inp2');
+            var valorAt2 = parseInt(input2.value);
+            valorAt2--;
+            valorAt2 = Math.max(valorAt2, 0);
+            input2.value = valorAt2;
+            multiplicar2()
+        }                      
+
+        function multiplicar2() {
+            var input2 = document.getElementById('inp2');
+            var valorInput2 = parseInt(input2.value);
+            var h12 = document.getElementById('val2')
+            h12.innerHTML = 'R$'+ valorInput2 * 150 + ",00";
+        }
+
+        function verificarCompra2() {
+            var input = document.getElementById('inp2');
+            var valorAt = parseInt(input.value);
+            var quantia2 = valorAt
+            if (valorAt === 0) {
+                alert('Você precisa selecionar pelo menos 1 item para comprar.');
+                event.preventDefault();
+            } else{
+                alert("Complete o formulário para concluir a compra!")
+                nomeProduto2()
+                adicionarConteudo2()
+                esc()
+                
+            }
+        }
+            
+        function esc(){
+        var item = document.getElementById('meuFormulario')
+        if(item.style.opacity === 1){
+            item.style.opacity = 0
+        }else {
+            item.style.opacity = 1
+
+        }
+    }
+
+        function adicionarConteudo2() {
+            var input = document.getElementById('inp2');
+            var valorInput2 = parseInt(input.value);
+            var valorTotal2 = valorInput2 * 150;
+            quantia2 = valorInput2
+            if (localStorage.getItem('vendas')) {
+                var vendas = JSON.parse(localStorage.getItem('vendas'));
+                vendas.push(valorTotal2);
+                localStorage.setItem('vendas', JSON.stringify(vendas));
+            } else {
+                var novaArray = [valorTotal2];
+                localStorage.setItem('vendas', JSON.stringify(novaArray));
+            }
+        }
+
+        function somarValoresVendas2() {
+            if (localStorage.getItem('vendas')) {
+                var vendas = JSON.parse(localStorage.getItem('vendas'));
+
+                if (vendas.length === 0) {
+                    alert('Não houve vendas registradas.');
+                } else {
+                    var totalVendas2 = vendas.reduce((total2, venda2) => total2 + venda2, 0);
+                    alert(`A soma total das vendas é: R$${totalVendas2}`);
+                }
+            } else {
+                alert('Não houve vendas registradas.');
+            }
+        }
+//---------------------------------------------------------------------------------------//
+        function validarFormulario() {
+        event.preventDefault();
+        var nome = document.getElementById('nome').value;
+        var cpf = document.getElementById('cpf').value;
+        var email = document.getElementById('email').value;
+        var telefone = document.getElementById('telefone').value;
+        var cep = document.getElementById('cep').value;
+        var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+        var telefoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+        var cepRegex = /^\d{5}-\d{3}$/;
+
+        if (!nome || !cpfRegex.test(cpf) || !emailRegex.test(email) || !telefoneRegex.test(telefone) || !cepRegex.test(cep)) {
+            if (!nome) {
+                alert('Por favor, preencha o campo Nome do Cliente.');
+            }
+            if (!cpfRegex.test(cpf)) {
+                alert('Por favor, insira um CPF válido (Formato: 123.456.789-00).');
+            }
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um Email válido.');
+            }
+            if (!telefoneRegex.test(telefone)) {
+                alert('Por favor, insira um Telefone válido (Formato: (12) 34567-8901).');
+            }
+            if (!cepRegex.test(cep)) {
+                alert('Por favor, insira um CEP válido (Formato: 12345-678).');
+            }
+        } else { 
+            preencherTextarea()
+            document.getElementById('meuFormulario').submit();
+        }
+    }
+
+        function preencherTextarea() {
+            
+
+
+
+
+            localStorage.getItem('vendas')
+            var vendas = JSON.parse(localStorage.getItem('vendas'));
+            for(var i = vendas.length -1; i < vendas.length; i++){
+                var preço = vendas[i]
+                console.log(preço)
+            }
+
+            if (localStorage.getItem('nome')) {
+                var torradeira = JSON.parse(localStorage.getItem('nome'));
+            }
+            
+            if (localStorage.getItem('nome2')) {
+                var nome2 = JSON.parse(localStorage.getItem('nome2'));
+            }
+              quant = parseInt(document.getElementById('inp').value); 
+              quant2 = parseInt(document.getElementById('inp2').value);
+        var texto = document.getElementById('nome').value + ' comprou no valor de: R$' + preço + ' uma quantia de: ' + quant + ' unidades do(a) ' + torradeira +' e ' + quant2 + ' unidades do(a) ' + nome2 +'.'
+        document.getElementById("tea").value = texto;
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Venda de Torradeiras</h1>
+        <nav id="nav">
+            <ul id="menu" class="active">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html">Torradeiras</a></li>
+                <li><a href="index.html">Preços</a></li>
+                <li><a onclick="somarValoresVendas()" href="index.html">Soma das Vendas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-bottom: 288px;">
+        <section class="cards">
+
+            <div class="card" style="grid-template-columns: auto auto auto; gap: 10px;">
+                <img height="250px" width="270px" style="margin-top: 40px;" src="Img/1.jpg" alt="Livro 1">
+                <h2 id="nome1" style="margin-top: 30px; color:#96b5f0" >Torradeira PX450 (R$200,00)</h2>
+                <p style="margin-top: 7px; margin-bottom: 12px; color: #ffffff">Preço:</p> <p style="color: white;" id="val1">R$0</p>
+                <button><a onclick="verificarCompra()">Comprar</a></button>
+                <input id="inp" type="number" id="numero" value="0" min="0" readonly>
+                <button onclick="mais()">+</button>
+                <button onclick="menos()">-</button>
+            </div> 
+
+            <div class="card">
+                <img height="250px" width="270px" style="margin-top: 40px;" src="Img/6.jpg" alt="Livro 1">
+                <h2 id="nome2" style="margin-top: 30px; color:#96b5f0" >Torradeira PH240 (R$150,00)</h2>
+                <p style="margin-top: 7px; margin-bottom: 12px; color: #ffffff">Preço:</p> <p style="color: white;" id="val2">R$0</p>
+                <button><a onclick="verificarCompra2()">Comprar</a></button>
+                <input id="inp2" type="number" id="numero" value="0" min="0" readonly>
+                <button onclick="mais2()">+</button>
+                <button onclick="menos2()">-</button>
+            </div>
+
+        </section>
+    </main>
+
+    <form id="meuFormulario" style="position: absolute; right: 180px; top: 135px" method="post" action="http://jkorpela.fi/cgi-bin/echo.cgi" onsubmit="return validarFormulario()">
+        <label for="nome">Nome do Cliente:</label>
+        <input type="text" id="nome" name="Nome" required>
+    
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="CPF" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato válido: 123.456.789-00" placeholder="123.456.789-00">
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" required>
+    
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="Telefone" required pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Formato válido: (12) 34567-8901" placeholder="(12) 34567-8901">
+    
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="Cep" required pattern="\d{5}-\d{3}" title="Formato válido: 12345-678" placeholder="12345-678">
+
+        <textarea  id="tea" for="emailmsg" rows="3" cols="25" name="Mensagem de email" placeholder="Um texto" style="display: none;"></textarea>
+    
+        <button type="submit">Enviar</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2023 Torradeiraria Online (Loja de Torradeiras) | Criado por Gabriel Cavagnoli</p>
+    </footer>
+</body>
+</html>

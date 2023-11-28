@@ -1,0 +1,160 @@
+@import url(https://fonts.googleapis.com/css?family=Sofia);
+
+h1 {
+    font-family: Sofia;
+    color: white;
+}
+
+h1:hover{
+  animation: go-back 1s infinite alternate;
+}
+
+
+@keyframes go-back {
+  from {
+    transform: translateX(12px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+#nav ul li a{
+  color: white;
+}
+#nav ul#menu li:hover {
+    transform: scale(1.1);
+    transition: .3s;
+    background-color: #4c83e9;
+    border: 3px solid #ffffff;
+    padding: 2px 3px;
+}
+
+img{
+  border: 5px solid #000000;
+}
+
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #6e9aec;
+    display: grid;
+}
+
+header {
+    background-color: #4882ee;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none; 
+}
+
+nav li {
+    display: inline; 
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none; 
+    font-weight: bold; 
+    color: #000000;
+}
+
+main {
+    padding: 20px;
+    overflow: hidden; }
+
+    .card {
+        width: calc(33.33% - 20px); 
+        margin: 10px; 
+        padding: 0px 20px 10px 20px;
+        background-color: #5082df;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        float: left; 
+    }
+
+    footer {
+        background-color: #4882ee;
+        color: #ffffff;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .card button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        margin-top: 10px;
+        cursor: pointer; 
+        transition: background-color 0.3s ease; 
+    }
+    
+    .card button:hover {
+        background-color: #555; 
+    }
+
+    button a{
+      text-decoration: none;
+      color: white;
+    }
+
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#in{
+  width: 20px;
+}
+
+form {
+  opacity: 0;
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
